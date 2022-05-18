@@ -193,6 +193,56 @@ class Solution {
 
 //📌 4th Approach 
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
 
+    
+    // -(int)1e9 is reffered to -infinity and (int)1e9 referred to as +infinity 
+     static int ans =-(int)1e9;
+    
+    
+    public int diameter(TreeNode node)
+    {
+        if(node==null)
+        {
+            return -1;
+        }
+            
+        
+        int leftHeight =diameter(node.left);
+        int rightHeight=diameter(node.right);
+        
+        ans =Math.max(ans,leftHeight+rightHeight+2);
+        // int mypair =new int[2];
+        int myHeight =Math.max(leftHeight,rightHeight)+1;
+        
+        
+        
+        return myHeight;
+    }
+    
+    
+    public int diameterOfBinaryTree(TreeNode root) 
+    {
+        ans =-(int)1e9;
+        diameter(root);
+        return ans;
+        
+    }
+}
 
 
